@@ -47,6 +47,44 @@
     --glow-primary: 0 0 40px hsl(250 85% 65% / 0.3);
     --glow-accent: 0 0 40px hsl(280 70% 60% / 0.2);
   }
+
+  :root.light {
+    --background: 220 30% 98%;
+    --foreground: 230 25% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 230 25% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 230 25% 12%;
+
+    --primary: 248 80% 58%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 204 90% 48%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 220 25% 92%;
+    --muted-foreground: 225 12% 40%;
+
+    --accent: 276 70% 56%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 80% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 20% 85%;
+    --input: 220 20% 85%;
+    --ring: 248 80% 58%;
+
+    --glass: 0 0% 100%;
+    --glass-border: 220 20% 80%;
+    --user-bubble: 204 90% 48%;
+    --ai-bubble: 220 30% 95%;
+
+    --glow-primary: 0 0 30px hsl(248 80% 58% / 0.22);
+    --glow-accent: 0 0 30px hsl(276 70% 56% / 0.18);
+  }
 }
 
 @layer base {
