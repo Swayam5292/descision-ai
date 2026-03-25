@@ -11,9 +11,12 @@ import { streamChat, type Msg } from "@/lib/streamChat";
 import { createMessage, type Message } from "@/lib/decisionAI";
 
 import { supabase } from "@/integrations/supabase/client";
-=======
 
 import { supabase } from "@/integrations/supabase/client";
+
+
+import { supabase } from "@/integrations/supabase/client";
+
 
 
 
@@ -164,6 +167,10 @@ export default function Chat() {
         </div>
 
 
+
+        </div>
+
+
         </div>
 
 
@@ -172,6 +179,7 @@ export default function Chat() {
         </div>
 
         {/* Messages */}
+
 
 
         <div ref={chatRef} className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-thin">

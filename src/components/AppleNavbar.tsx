@@ -1,9 +1,13 @@
 
+
+
 import { Moon, Sparkles, Sun } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 type Theme = "dark" | "light";
+
+
 
 import { Sparkles } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
@@ -14,6 +18,8 @@ const links = [
   { href: "/chat", label: "Assistant" },
   { href: "/auth", label: "Login" },
 ];
+
+
 
 
 const THEME_KEY = "descision-ai-theme";
@@ -38,9 +44,12 @@ export function AppleNavbar() {
   }, [theme]);
 
   const toggleTheme = () => setTheme((prev) => (prev === "dark" ? "light" : "dark"));
-=======
+
+
+
 export function AppleNavbar() {
   const location = useLocation();
+
 
 
   return (
@@ -52,6 +61,8 @@ export function AppleNavbar() {
           </div>
           <span className="font-display text-base font-semibold text-foreground">Descision AI</span>
         </Link>
+
+
 
 
         <div className="flex items-center gap-2">
@@ -83,6 +94,7 @@ export function AppleNavbar() {
             {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
           </button>
 
+
         <div className="flex items-center gap-1 rounded-full bg-white/5 p-1">
           {links.map((link) => {
             const active = location.pathname === link.href;
@@ -99,6 +111,7 @@ export function AppleNavbar() {
               </Link>
             );
           })}
+
 
         </div>
       </nav>
