@@ -8,7 +8,7 @@ import { ChatMessage } from "@/components/ChatMessage";
 import { TypingIndicator } from "@/components/TypingIndicator";
 import { SuggestionChips } from "@/components/SuggestionChips";
 import { streamChat, type Msg } from "@/lib/streamChat";
-import { createMessage, getSuggestions, type Message } from "@/lib/decisionAI";
+import { createMessage, type Message } from "@/lib/decisionAI";
 
 const WELCOME: Message = createMessage(
   "assistant",
@@ -141,6 +141,10 @@ export default function Chat() {
           </button>
         </div>
 
+        <div className="mx-4 mt-3 rounded-xl border border-primary/20 bg-primary/5 px-3 py-2 text-xs text-muted-foreground">
+          Tip: Ask follow-up questions like “explain simpler” or “give me a quiz question” for better study flow.
+        </div>
+
         {/* Messages */}
         <div ref={chatRef} className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-thin">
           {messages.map((msg) => (
@@ -166,13 +170,16 @@ export default function Chat() {
             className="flex gap-2"
           >
             <input
+              aria-label="Study question input"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask any study question..."
               className="flex-1 bg-muted/50 text-foreground placeholder:text-muted-foreground rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-primary/40 transition-shadow font-body"
+              maxLength={500}
               disabled={isTyping}
             />
             <button
+              aria-label="Send message"
               type="submit"
               disabled={!input.trim() || isTyping}
               className="w-11 h-11 rounded-xl bg-primary text-primary-foreground flex items-center justify-center hover:opacity-90 disabled:opacity-30 transition-opacity"
@@ -180,6 +187,10 @@ export default function Chat() {
               <Send className="w-4 h-4" />
             </button>
           </form>
+          <div className="mt-2 flex items-center justify-between px-1 text-[11px] text-muted-foreground">
+            <span>Press Enter to send</span>
+            <span>{input.length}/500</span>
+          </div>
         </div>
       </motion.div>
     </div>
