@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
-import { Send, Sparkles, RotateCcw, ArrowLeft } from "lucide-react";
+import { Send, Sparkles, RotateCcw, ArrowLeft, LogOut } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import heroBg from "@/assets/hero-bg.jpg";
@@ -8,11 +8,12 @@ import { ChatMessage } from "@/components/ChatMessage";
 import { TypingIndicator } from "@/components/TypingIndicator";
 import { SuggestionChips } from "@/components/SuggestionChips";
 import { streamChat, type Msg } from "@/lib/streamChat";
-import { createMessage, getSuggestions, type Message } from "@/lib/decisionAI";
+import { createMessage, type Message } from "@/lib/decisionAI";
+import { supabase } from "@/integrations/supabase/client";
 
 const WELCOME: Message = createMessage(
   "assistant",
-  "👋 **Welcome to AI Study Assistant!**\n\nI'm powered by **Google Gemini AI** and connected to real-world knowledge. Ask me anything — study questions, concept explanations, or even how you're feeling.\n\n*Try one of the suggestions below, or type your own!*"
+  "👋 **Welcome to Descision AI!**\n\nI'm your study assistant for concept learning, exam prep, and clear explanations. Ask anything and I’ll respond with practical, easy-to-follow guidance."
 );
 
 const initialSuggestions = [
@@ -53,7 +54,6 @@ export default function Chat() {
       setIsTyping(true);
       setSuggestions([]);
 
-      // Build message history for AI
       const chatHistory: Msg[] = messages
         .filter((m) => m !== WELCOME)
         .map((m) => ({ role: m.role, content: m.content }));
@@ -101,8 +101,14 @@ export default function Chat() {
     setInput("");
   };
 
+  const handleSignOut = async () => {
+    await supabase.auth.signOut();
+    toast.success("Signed out successfully");
+    navigate("/auth");
+  };
+
   return (
-    <div className="relative min-h-screen flex items-center justify-center p-4 overflow-hidden">
+    <div className="relative min-h-screen flex items-center justify-center p-3 sm:p-4 overflow-hidden">
       <img src={heroBg} alt="" className="absolute inset-0 w-full h-full object-cover opacity-30" width={1920} height={1080} />
       <div className="absolute inset-0 bg-gradient-to-br from-background/90 via-background/70 to-background/90" />
 
@@ -110,9 +116,8 @@ export default function Chat() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="relative w-full max-w-lg h-[85vh] max-h-[700px] glass-strong rounded-3xl flex flex-col overflow-hidden glow-primary"
+        className="relative w-full max-w-4xl h-[90vh] max-h-[860px] glass-strong rounded-3xl flex flex-col overflow-hidden glow-primary"
       >
-        {/* Header */}
         <div className="flex items-center justify-between px-5 py-4 border-b border-border/30">
           <div className="flex items-center gap-3">
             <button
@@ -125,38 +130,45 @@ export default function Chat() {
               <Sparkles className="w-5 h-5 text-primary" />
             </div>
             <div>
-              <h1 className="font-display text-lg font-semibold text-foreground">AI Study Assistant</h1>
-              <p className="text-xs text-muted-foreground flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-green-400" />
-                Powered by Gemini AI
-              </p>
+              <h1 className="font-display text-lg font-semibold text-foreground">Descision AI</h1>
+              <p className="text-xs text-muted-foreground">Personal academic assistant</p>
             </div>
           </div>
-          <button
-            onClick={handleReset}
-            className="w-9 h-9 rounded-xl flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors"
-            title="Reset chat"
-          >
-            <RotateCcw className="w-4 h-4" />
-          </button>
+          <div className="flex items-center gap-1">
+            <button
+              onClick={handleReset}
+              className="w-9 h-9 rounded-xl flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors"
+              title="Reset chat"
+            >
+              <RotateCcw className="w-4 h-4" />
+            </button>
+            <button
+              onClick={handleSignOut}
+              className="w-9 h-9 rounded-xl flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors"
+              title="Sign out"
+            >
+              <LogOut className="w-4 h-4" />
+            </button>
+          </div>
         </div>
 
-        {/* Messages */}
-        <div ref={chatRef} className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-thin">
+        <div className="mx-4 mt-3 rounded-xl border border-primary/20 bg-primary/5 px-3 py-2 text-xs text-muted-foreground">
+          Tip: ask for summaries, quiz questions, or step-by-step breakdowns to improve retention.
+        </div>
+
+        <div ref={chatRef} className="flex-1 overflow-y-auto p-4 sm:p-5 space-y-4 scrollbar-thin">
           {messages.map((msg) => (
             <ChatMessage key={msg.id} message={msg} />
           ))}
           {isTyping && messages[messages.length - 1]?.role !== "assistant" && <TypingIndicator />}
         </div>
 
-        {/* Suggestions */}
         {suggestions.length > 0 && !isTyping && (
           <div className="px-3 pb-2">
             <SuggestionChips suggestions={suggestions} onSelect={sendMessage} />
           </div>
         )}
 
-        {/* Input */}
         <div className="p-3 border-t border-border/30">
           <form
             onSubmit={(e) => {
@@ -166,13 +178,16 @@ export default function Chat() {
             className="flex gap-2"
           >
             <input
+              aria-label="Study question input"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask any study question..."
               className="flex-1 bg-muted/50 text-foreground placeholder:text-muted-foreground rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-primary/40 transition-shadow font-body"
+              maxLength={500}
               disabled={isTyping}
             />
             <button
+              aria-label="Send message"
               type="submit"
               disabled={!input.trim() || isTyping}
               className="w-11 h-11 rounded-xl bg-primary text-primary-foreground flex items-center justify-center hover:opacity-90 disabled:opacity-30 transition-opacity"
@@ -180,6 +195,10 @@ export default function Chat() {
               <Send className="w-4 h-4" />
             </button>
           </form>
+          <div className="mt-2 flex items-center justify-between px-1 text-[11px] text-muted-foreground">
+            <span>Press Enter to send</span>
+            <span>{input.length}/500</span>
+          </div>
         </div>
       </motion.div>
     </div>
