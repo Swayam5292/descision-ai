@@ -49,6 +49,9 @@
   }
 
   :root.light {
+    --background: 220 33% 97%;
+    --foreground: 228 30% 12%;
+
 
     --background: 220 33% 97%;
     --foreground: 228 30% 12%;
@@ -72,6 +75,9 @@
 
     --secondary: 204 90% 48%;
     --secondary-foreground: 0 0% 100%;
+
+    --muted: 220 28% 90%;
+    --muted-foreground: 225 14% 34%;
 
 
     --muted: 220 28% 90%;

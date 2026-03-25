@@ -5,14 +5,6 @@ import { useEffect, useState } from "react";
 
 type Theme = "dark" | "light";
 
-
-
-
-
-import { Sparkles } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
-
-
 const links = [
   { href: "/", label: "Home" },
   { href: "/chat", label: "Assistant" },
@@ -43,6 +35,9 @@ export function AppleNavbar() {
 
   const toggleTheme = () => setTheme((prev) => (prev === "dark" ? "light" : "dark"));
 
+  return (
+    <div className="sticky top-4 z-50 mx-auto mb-8 w-full max-w-7xl px-4 sm:px-6">
+      <nav className="glass mx-auto flex items-center justify-between rounded-2xl px-4 py-3 shadow-lg shadow-black/5">
 
   return (
     <div className="sticky top-4 z-50 mx-auto mb-8 w-full max-w-7xl px-4 sm:px-6">
@@ -72,6 +67,8 @@ export function AppleNavbar() {
           <span className="font-display text-base font-semibold text-foreground">Descision AI</span>
         </Link>
 
+        <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1 rounded-full bg-muted/50 p-1">
 
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-1 rounded-full bg-muted/50 p-1">
@@ -94,6 +91,8 @@ export function AppleNavbar() {
                 <Link
                   key={link.href}
                   to={link.href}
+                  className={`rounded-full px-4 py-1.5 text-sm transition-all ${
+                    active ? "bg-card text-foreground shadow-sm" : "text-muted-foreground hover:text-foreground"
 
                   className={`rounded-full px-4 py-1.5 text-sm transition-all ${
                     active ? "bg-card text-foreground shadow-sm" : "text-muted-foreground hover:text-foreground"
@@ -118,6 +117,7 @@ export function AppleNavbar() {
             type="button"
             onClick={toggleTheme}
             aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition-colors hover:text-foreground"
 
             className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition-colors hover:text-foreground"
 

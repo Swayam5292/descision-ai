@@ -1,3 +1,6 @@
+import { FormEvent, useEffect, useMemo, useState } from "react";
+import { motion } from "framer-motion";
+import { Eye, EyeOff, Loader2, Lock, Mail, ShieldCheck } from "lucide-react";
 
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
@@ -21,6 +24,7 @@ export default function Auth() {
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const [showPassword, setShowPassword] = useState(false);
 
