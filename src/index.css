@@ -49,8 +49,8 @@
   }
 
   :root.light {
-    --background: 220 30% 98%;
-    --foreground: 230 25% 12%;
+    --background: 220 33% 97%;
+    --foreground: 228 30% 12%;
 
     --card: 0 0% 100%;
     --card-foreground: 230 25% 12%;
@@ -64,8 +64,8 @@
     --secondary: 204 90% 48%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 220 25% 92%;
-    --muted-foreground: 225 12% 40%;
+    --muted: 220 28% 90%;
+    --muted-foreground: 225 14% 34%;
 
     --accent: 276 70% 56%;
     --accent-foreground: 0 0% 100%;
@@ -73,17 +73,17 @@
     --destructive: 0 80% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 20% 85%;
-    --input: 220 20% 85%;
+    --border: 220 18% 80%;
+    --input: 220 18% 80%;
     --ring: 248 80% 58%;
 
     --glass: 0 0% 100%;
-    --glass-border: 220 20% 80%;
+    --glass-border: 220 20% 74%;
     --user-bubble: 204 90% 48%;
     --ai-bubble: 220 30% 95%;
 
-    --glow-primary: 0 0 30px hsl(248 80% 58% / 0.22);
-    --glow-accent: 0 0 30px hsl(276 70% 56% / 0.18);
+    --glow-primary: 0 0 34px hsl(248 80% 58% / 0.25);
+    --glow-accent: 0 0 34px hsl(276 70% 56% / 0.2);
   }
 }
 
