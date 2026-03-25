@@ -53,9 +53,13 @@
     --background: 220 33% 97%;
     --foreground: 228 30% 12%;
 
+
+
+    --background: 220 33% 97%;
+    --foreground: 228 30% 12%;
+
     --background: 220 30% 98%;
     --foreground: 230 25% 12%;
-
 
     --card: 0 0% 100%;
     --card-foreground: 230 25% 12%;
@@ -73,6 +77,11 @@
     --muted: 220 28% 90%;
     --muted-foreground: 225 14% 34%;
 
+
+
+    --muted: 220 28% 90%;
+    --muted-foreground: 225 14% 34%;
+
     --muted: 220 25% 92%;
     --muted-foreground: 225 12% 40%;
 
@@ -82,6 +91,8 @@
 
     --destructive: 0 80% 55%;
     --destructive-foreground: 0 0% 100%;
+
+
 
 
     --border: 220 18% 80%;
@@ -95,6 +106,7 @@
 
     --glow-primary: 0 0 34px hsl(248 80% 58% / 0.25);
     --glow-accent: 0 0 34px hsl(276 70% 56% / 0.2);
+
 
     --border: 220 20% 85%;
     --input: 220 20% 85%;

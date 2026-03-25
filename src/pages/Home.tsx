@@ -81,6 +81,58 @@ export default function Home() {
                 <div key={item.label} className="glass rounded-2xl p-4 text-left">
                   <p className="text-xs uppercase tracking-wide text-muted-foreground">{item.label}</p>
                   <p className="mt-1 text-sm font-semibold text-foreground">{item.value}</p>
+
+                </div>
+              ))}
+            </div>
+
+            <div className="flex flex-col justify-center gap-3 sm:flex-row">
+              <button
+                onClick={() => navigate("/chat")}
+                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-primary px-8 py-4 text-base font-semibold text-primary-foreground transition-all hover:scale-[1.01] hover:opacity-95"
+              >
+                <MessageSquare className="h-4 w-4" />
+                Open Assistant
+                <ArrowRight className="h-4 w-4" />
+              </button>
+              <button
+                onClick={() => navigate("/auth")}
+                className="rounded-2xl border border-border bg-card px-8 py-4 text-base font-medium text-foreground transition-all hover:bg-muted"
+              >
+                Login / Register
+              </button>
+            </div>
+          </motion.div>
+        </section>
+
+        <section className="mx-auto max-w-7xl px-2 pb-10">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-8"
+          >
+            <h2 className="font-display text-3xl font-bold text-foreground sm:text-4xl">What you can do with Descision AI</h2>
+            <p className="mt-2 max-w-3xl text-muted-foreground">
+              Use guided explanations, short summaries, practice questions, and revision plans tailored to your learning goals.
+            </p>
+          </motion.div>
+
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {features.map((feature, i) => (
+              <motion.div
+                key={feature.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.06 }}
+                whileHover={{ y: -4 }}
+                className="glass rounded-2xl p-7"
+              >
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/15">
+                  <feature.icon className="h-5 w-5 text-primary" />
+                </div>
+
                 </div>
               ))}
             </div>
@@ -191,6 +243,7 @@ export default function Home() {
 
                   <feature.icon className="h-5 w-5 text-primary" />
                 </div>
+
                 <h3 className="mb-2 font-display text-lg font-semibold text-foreground">{feature.title}</h3>
                 <p className="text-sm leading-relaxed text-muted-foreground">{feature.desc}</p>
               </motion.div>

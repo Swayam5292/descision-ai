@@ -1,14 +1,10 @@
 
-
-
-
-
-
 import { Moon, Sparkles, Sun } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 type Theme = "dark" | "light";
+
 
 
 
@@ -53,6 +49,11 @@ export function AppleNavbar() {
       <nav className="glass mx-auto flex items-center justify-between rounded-2xl px-4 py-3 shadow-lg shadow-black/5">
 
 
+  return (
+    <div className="sticky top-4 z-50 mx-auto mb-8 w-full max-w-7xl px-4 sm:px-6">
+      <nav className="glass mx-auto flex items-center justify-between rounded-2xl px-4 py-3 shadow-lg shadow-black/5">
+
+
 
 export function AppleNavbar() {
   const location = useLocation();
@@ -62,6 +63,7 @@ export function AppleNavbar() {
   return (
     <div className="sticky top-4 z-50 mx-auto mb-8 w-full max-w-6xl px-4 sm:px-6">
       <nav className="mx-auto flex items-center justify-between rounded-2xl border border-white/10 bg-black/30 px-4 py-3 backdrop-blur-xl">
+
 
         <Link to="/" className="flex items-center gap-2">
           <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/20">
@@ -75,10 +77,15 @@ export function AppleNavbar() {
           <div className="flex items-center gap-1 rounded-full bg-muted/50 p-1">
 
 
+        <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1 rounded-full bg-muted/50 p-1">
+
+
 
 
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-1 rounded-full bg-white/5 p-1">
+
 
             {links.map((link) => {
               const active = location.pathname === link.href;
@@ -91,8 +98,13 @@ export function AppleNavbar() {
                   className={`rounded-full px-4 py-1.5 text-sm transition-all ${
                     active ? "bg-card text-foreground shadow-sm" : "text-muted-foreground hover:text-foreground"
 
+
+                  className={`rounded-full px-4 py-1.5 text-sm transition-all ${
+                    active ? "bg-card text-foreground shadow-sm" : "text-muted-foreground hover:text-foreground"
+
                   className={`rounded-full px-4 py-1.5 text-sm transition-colors ${
                     active ? "bg-white/15 text-foreground" : "text-muted-foreground hover:text-foreground"
+
 
                   }`}
                 >
@@ -109,12 +121,16 @@ export function AppleNavbar() {
 
             className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition-colors hover:text-foreground"
 
+
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition-colors hover:text-foreground"
+
             className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/5 text-muted-foreground transition-colors hover:text-foreground"
 
             title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
           >
             {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
           </button>
+
 
 
 
@@ -134,6 +150,7 @@ export function AppleNavbar() {
               </Link>
             );
           })}
+
 
 
 

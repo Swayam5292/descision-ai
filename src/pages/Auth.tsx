@@ -3,6 +3,11 @@ import { FormEvent, useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { Eye, EyeOff, Loader2, Lock, Mail, ShieldCheck } from "lucide-react";
 
+
+import { FormEvent, useEffect, useMemo, useState } from "react";
+import { motion } from "framer-motion";
+import { Eye, EyeOff, Loader2, Lock, Mail, ShieldCheck } from "lucide-react";
+
 import { FormEvent, useEffect, useState } from "react";
 
 import { useNavigate } from "react-router-dom";
@@ -19,6 +24,10 @@ export default function Auth() {
 
   const [showPassword, setShowPassword] = useState(false);
 
+
+  const [showPassword, setShowPassword] = useState(false);
+
+
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -26,6 +35,7 @@ export default function Auth() {
       if (data.session) navigate("/chat");
     });
   }, [navigate]);
+
 
 
   const passwordStrength = useMemo(() => {
@@ -67,12 +77,20 @@ export default function Auth() {
       <img src={heroBg} alt="" className="absolute inset-0 h-full w-full object-cover opacity-15" width={1920} height={1080} />
       <div className="absolute inset-0 bg-gradient-to-b from-background/85 via-background/95 to-background" />
 
+      <div className="relative z-10">
+        <AppleNavbar />
+
+
+      <img src={heroBg} alt="" className="absolute inset-0 h-full w-full object-cover opacity-15" width={1920} height={1080} />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/85 via-background/95 to-background" />
+
       <img src={heroBg} alt="" className="absolute inset-0 h-full w-full object-cover opacity-20" width={1920} height={1080} />
       <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/95 to-background" />
 
 
       <div className="relative z-10">
         <AppleNavbar />
+
 
 
         <motion.div
@@ -190,6 +208,7 @@ export default function Auth() {
           </div>
         </motion.div>
 
+
         <div className="mx-auto mt-12 w-full max-w-md rounded-3xl border border-white/10 bg-black/30 p-8 backdrop-blur-xl">
           <h1 className="font-display text-3xl font-semibold text-foreground">{isLogin ? "Sign in" : "Create account"}</h1>
           <p className="mt-2 text-sm text-muted-foreground">Secure authentication powered by Supabase backend.</p>
@@ -235,6 +254,7 @@ export default function Auth() {
             {isLogin ? "New here? Create an account" : "Already registered? Sign in"}
           </button>
         </div>
+
 
       </div>
     </div>

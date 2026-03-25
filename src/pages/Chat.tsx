@@ -15,10 +15,14 @@ import { supabase } from "@/integrations/supabase/client";
 
 import { supabase } from "@/integrations/supabase/client";
 
+
+import { supabase } from "@/integrations/supabase/client";
+
 import { supabase } from "@/integrations/supabase/client";
 
 
 import { supabase } from "@/integrations/supabase/client";
+
 
 
 
@@ -121,7 +125,7 @@ export default function Chat() {
   };
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center p-4 overflow-hidden">
+    <div className="relative min-h-screen flex items-center justify-center p-3 sm:p-4 overflow-hidden">
       <img src={heroBg} alt="" className="absolute inset-0 w-full h-full object-cover opacity-30" width={1920} height={1080} />
       <div className="absolute inset-0 bg-gradient-to-br from-background/90 via-background/70 to-background/90" />
 
@@ -129,7 +133,7 @@ export default function Chat() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="relative w-full max-w-lg h-[85vh] max-h-[700px] glass-strong rounded-3xl flex flex-col overflow-hidden glow-primary"
+        className="relative w-full max-w-4xl h-[90vh] max-h-[860px] glass-strong rounded-3xl flex flex-col overflow-hidden glow-primary"
       >
         <div className="flex items-center justify-between px-5 py-4 border-b border-border/30">
           <div className="flex items-center gap-3">
@@ -163,6 +167,15 @@ export default function Chat() {
               <LogOut className="w-4 h-4" />
             </button>
           </div>
+
+        </div>
+
+        <div className="mx-4 mt-3 rounded-xl border border-primary/20 bg-primary/5 px-3 py-2 text-xs text-muted-foreground">
+          Tip: ask for summaries, quiz questions, or step-by-step breakdowns to improve retention.
+        </div>
+
+        <div ref={chatRef} className="flex-1 overflow-y-auto p-4 sm:p-5 space-y-4 scrollbar-thin">
+
         </div>
 
         <div className="mx-4 mt-3 rounded-xl border border-primary/20 bg-primary/5 px-3 py-2 text-xs text-muted-foreground">
@@ -192,6 +205,7 @@ export default function Chat() {
 
 
         <div ref={chatRef} className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-thin">
+
           {messages.map((msg) => (
             <ChatMessage key={msg.id} message={msg} />
           ))}
