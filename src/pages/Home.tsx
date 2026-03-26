@@ -59,48 +59,84 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="mx-auto max-w-5xl text-center"
           >
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-card/80 px-4 py-1.5 text-xs text-muted-foreground backdrop-blur-xl">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-card/80 px-4 py-1.5 text-xs text-muted-foreground backdrop-blur-xl"
+            >
               <Sparkles className="h-3.5 w-3.5 text-primary" />
               Intelligent tutoring with secure authentication
-            </div>
+            </motion.div>
 
-            <h1 className="mb-6 font-display text-5xl font-bold leading-tight text-foreground sm:text-6xl lg:text-7xl">
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              className="mb-6 font-display text-5xl font-bold leading-tight text-foreground sm:text-6xl lg:text-7xl"
+            >
               Learn Better, Faster with <span className="text-gradient">Descision AI</span>
-            </h1>
+            </motion.h1>
 
-            <p className="mx-auto mb-8 max-w-4xl text-lg text-muted-foreground sm:text-xl">
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.45, duration: 0.6 }}
+              className="mx-auto mb-8 max-w-4xl text-lg text-muted-foreground sm:text-xl"
+            >
               Descision AI is a modern learning assistant designed for serious students. It combines conversational AI,
               real-world knowledge retrieval, and secure user accounts so you can study with confidence every day.
-            </p>
+            </motion.p>
 
-            <div className="mb-9 grid gap-4 sm:grid-cols-3">
-              {quickStats.map((item) => (
-                <div key={item.label} className="glass rounded-2xl p-4 text-left">
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.55, duration: 0.6 }}
+              className="mb-9 grid gap-4 sm:grid-cols-3"
+            >
+              {quickStats.map((item, i) => (
+                <motion.div
+                  key={item.label}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6 + i * 0.1, duration: 0.5 }}
+                  whileHover={{ y: -3, transition: { duration: 0.2 } }}
+                  className="glass rounded-2xl p-4 text-left"
+                >
                   <p className="text-xs uppercase tracking-wide text-muted-foreground">{item.label}</p>
                   <p className="mt-1 text-sm font-semibold text-foreground">{item.value}</p>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
 
-            <div className="flex flex-col justify-center gap-3 sm:flex-row">
-              <button
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8, duration: 0.5 }}
+              className="flex flex-col justify-center gap-3 sm:flex-row"
+            >
+              <motion.button
                 onClick={() => navigate("/chat")}
-                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-primary px-8 py-4 text-base font-semibold text-primary-foreground transition-all hover:scale-[1.01] hover:opacity-95"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-primary px-8 py-4 text-base font-semibold text-primary-foreground transition-all hover:opacity-95"
               >
                 <MessageSquare className="h-4 w-4" />
                 Open Assistant
                 <ArrowRight className="h-4 w-4" />
-              </button>
-              <button
+              </motion.button>
+              <motion.button
                 onClick={() => navigate("/auth")}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
                 className="rounded-2xl border border-border bg-card px-8 py-4 text-base font-medium text-foreground transition-all hover:bg-muted"
               >
                 Login / Register
-              </button>
-            </div>
+              </motion.button>
+            </motion.div>
           </motion.div>
         </section>
 
