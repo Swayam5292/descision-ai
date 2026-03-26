@@ -140,6 +140,95 @@ export default function Home() {
             ))}
           </div>
         </section>
+
+        {/* AI-Ready Databases Section */}
+        <section className="mx-auto max-w-7xl px-2 pb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-10 text-center"
+          >
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs text-primary backdrop-blur-xl">
+              <Database className="h-3.5 w-3.5" />
+              Track 2 · Real-World Data
+            </div>
+            <h2 className="font-display text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">
+              Build &amp; Migrate Faster with{" "}
+              <span className="text-gradient">AI-Ready Databases</span>
+            </h2>
+            <p className="mx-auto mt-4 max-w-3xl text-muted-foreground sm:text-lg">
+              Connect AI agents to real-world data sources. Descision AI uses live knowledge retrieval, 
+              structured backends, and intelligent caching to deliver grounded, accurate responses at scale.
+            </p>
+          </motion.div>
+
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                icon: Server,
+                title: "Cloud-Native Backend",
+                desc: "Powered by scalable serverless infrastructure with edge functions for low-latency AI responses.",
+              },
+              {
+                icon: Layers,
+                title: "Structured Data Pipelines",
+                desc: "Ingest, transform, and serve knowledge from multiple sources into a unified AI context.",
+              },
+              {
+                icon: Cpu,
+                title: "AI-Optimized Queries",
+                desc: "Smart retrieval ensures the AI fetches only the most relevant data for each student query.",
+              },
+              {
+                icon: RefreshCw,
+                title: "Real-Time Sync",
+                desc: "Live data updates keep responses current — no stale answers, always up-to-date knowledge.",
+              },
+            ].map((item, i) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                whileHover={{ y: -4 }}
+                className="glass rounded-2xl p-6 text-center"
+              >
+                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/15">
+                  <item.icon className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="mb-2 font-display text-base font-semibold text-foreground">{item.title}</h3>
+                <p className="text-sm leading-relaxed text-muted-foreground">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Architecture diagram-style callout */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-10 glass rounded-2xl p-8 sm:p-10"
+          >
+            <div className="flex flex-col items-center gap-6 sm:flex-row sm:gap-10">
+              <div className="flex shrink-0 items-center gap-3">
+                {[Database, ArrowRight, Cpu, ArrowRight, MessageSquare].map((Icon, i) => (
+                  <div key={i} className={Icon === ArrowRight ? "text-primary/50" : "flex h-12 w-12 items-center justify-center rounded-xl bg-primary/15"}>
+                    <Icon className={Icon === ArrowRight ? "h-5 w-5" : "h-5 w-5 text-primary"} />
+                  </div>
+                ))}
+              </div>
+              <div>
+                <h3 className="mb-1 font-display text-lg font-semibold text-foreground">End-to-End AI Pipeline</h3>
+                <p className="text-sm text-muted-foreground">
+                  Data flows from cloud databases through AI-optimized retrieval, processed by Gemini models, 
+                  and streamed to students in real-time — all secured with authentication and edge functions.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </section>
       </div>
     </div>
   );
