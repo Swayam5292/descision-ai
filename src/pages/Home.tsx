@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { ArrowRight, BookOpen, Brain, Database, Globe, MessageSquare, ShieldCheck, Sparkles, Zap } from "lucide-react";
+import { ArrowRight, BookOpen, Brain, Database, Globe, MessageSquare, Server, ShieldCheck, Sparkles, Zap, Layers, Cpu, RefreshCw } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 import { AppleNavbar } from "@/components/AppleNavbar";
 
